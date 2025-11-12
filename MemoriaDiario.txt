@@ -1,0 +1,15 @@
+04/11 -> 
+Planteamiento del trabajo, 
+Comienzo del diseño de arquitectura de Red, 
+Creación de estrucutra de carpetas para la realización del trabajo
+
+06/11 ->
+Configuración de git para el trabajo
+Investigación sobre dns y su aplicación en Docker
+
+
+uso de alpine para montar nginx (nginx:alpine)
+uso de imágenes personalizadas de Docker hub (webdevops/php-nginx) (integra php al servidor web)
+que dns recominedas? dnsmasq o bind9 son los que he visto
+
+webdevops/php-nginx y dns (webServer https)
