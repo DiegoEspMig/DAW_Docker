@@ -7,9 +7,18 @@ Creación de estrucutra de carpetas para la realización del trabajo
 Configuración de git para el trabajo
 Investigación sobre dns y su aplicación en Docker
 
+10/11 - 12/11 ->
+Investigación ficheros Dockerfile y docker-compose-yaml y estructura de carpetas necesaria
+Investigación sobre certificados y configuración en https://
 
-uso de alpine para montar nginx (nginx:alpine)
-uso de imágenes personalizadas de Docker hub (webdevops/php-nginx) (integra php al servidor web)
-que dns recominedas? dnsmasq o bind9 son los que he visto
+13/11 ->
+Puesta en marcha de los contenedores
+Prueba de funcionamiento
 
-webdevops/php-nginx y dns (webServer https)
+cambiar prompt, no gacer todo con rutas absolutas si no la ruta de hosts, y si se puede desde el fichero solicitar los permisos
+si no hay permisos (ordenadores del aula) que solución hay? aprovechando el dns?
+
+---
+
+en la presentacion se debe explicar el codigo, o hacer demostración
+en el word, tambien?

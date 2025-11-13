@@ -1,0 +1,42 @@
+[
+    {
+        "codigo": "RBB-3333",
+        "nombre": "BoligrafoPrueba",
+        "email_disenador": "email@examen.com",
+        "material": "oro",
+        "precio": 170000,
+        "estuche": "estuche_lujo"
+    },
+    {
+        "codigo": "DOS-1234",
+        "nombre": "SegundoBoligrafo",
+        "email_disenador": "dos@dos.es",
+        "material": "platino",
+        "precio": 35000,
+        "estuche": "piel_italiana"
+    },
+    {
+        "codigo": "RBB-3333",
+        "nombre": "SegundoBoligrafo",
+        "email_disenador": "email@examen.com",
+        "material": "platino",
+        "precio": 35000,
+        "estuche": "piel_italiana"
+    },
+    {
+        "codigo": "RBB-3333",
+        "nombre": "BoligrafoPrueba",
+        "email_disenador": "email@examen",
+        "material": "oro",
+        "precio": 30001,
+        "estuche": "estuche_lujo"
+    },
+    {
+        "codigo": "RBB-3333",
+        "nombre": "BoligrafoPrueba",
+        "email_disenador": "email@examen.com",
+        "material": "oro",
+        "precio": 30001,
+        "estuche": "estuche_lujo"
+    }
+]
