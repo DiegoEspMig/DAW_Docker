@@ -3,7 +3,6 @@ version: "3.9"
 services:
   web:
     build: .
-    image: php-nginx-server
     container_name: espmig_web
     ports:
       - "80:80"
