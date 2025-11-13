@@ -9,27 +9,27 @@ services:
       - "443:443"
     volumes:
       - ./www:/var/www/html
-      - ./conf/nginx:/opt/docker/etc/nginx/vhost.common.d
+      - ./conf/nginx:/etc/nginx/conf.d
       - ./certs:/etc/ssl/private
     networks:
       espmig_net:
         ipv4_address: 33.33.33.10
     restart: always
-    depends_on:
-      - dns
+#    depends_on:
+#      - dns
 
-  dns:
-    image: andyshinn/dnsmasq:2.85
-    container_name: espmig_dns
-    volumes: 
-      - ./conf/dns/dnsmasq.conf:/etc/dnsmasq.conf
-    ports:
-      - "53:53/udp"
-      - "53:53/tcp"
-    networks:
-      espmig_net:
-        ipv4_address: 33.33.33.20
-    restart: always
+#  dns:
+#    image: andyshinn/dnsmasq:latest
+#    container_name: espmig_dns
+#    volumes: 
+#      - ./conf/dns/dnsmasq.conf:/etc/dnsmasq.conf
+#    ports:
+#      - "53:53/udp"
+#      - "53:53/tcp"
+#    networks:
+#      espmig_net:
+#        ipv4_address: 33.33.33.20
+#    restart: always
 
 networks:
   espmig_net:
