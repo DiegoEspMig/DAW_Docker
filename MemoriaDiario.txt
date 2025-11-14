@@ -14,11 +14,4 @@ Investigación sobre certificados y configuración en https://
 13/11 ->
 Puesta en marcha de los contenedores
 Prueba de funcionamiento
-
-cambiar prompt, no gacer todo con rutas absolutas si no la ruta de hosts, y si se puede desde el fichero solicitar los permisos
-si no hay permisos (ordenadores del aula) que solución hay? aprovechando el dns?
-
----
-
-en la presentacion se debe explicar el codigo, o hacer demostración
-en el word, tambien?
+Cambios de docker-compose.yml para resolución de problemas y servir en localhost por el momento

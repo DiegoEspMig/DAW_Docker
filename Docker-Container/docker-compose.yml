@@ -15,21 +15,21 @@ services:
       espmig_net:
         ipv4_address: 33.33.33.10
     restart: always
-#    depends_on:
-#      - dns
 
-#  dns:
-#    image: andyshinn/dnsmasq:latest
-#    container_name: espmig_dns
-#    volumes: 
-#      - ./conf/dns/dnsmasq.conf:/etc/dnsmasq.conf
-#    ports:
-#      - "53:53/udp"
-#      - "53:53/tcp"
-#    networks:
-#      espmig_net:
-#        ipv4_address: 33.33.33.20
-#    restart: always
+  dns:
+    image: 4km3/dnsmasq:2.90-r3
+    container_name: espmig_dns
+    volumes: 
+      - ./conf/dns/dnsmasq.conf:/etc/dnsmasq.conf
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+    cap_add: # capacidad de administrar la red para escuchar puertos como el 53
+      - NET_ADMIN
+    networks:
+      espmig_net:
+        ipv4_address: 33.33.33.20
+    restart: always
 
 networks:
   espmig_net:
