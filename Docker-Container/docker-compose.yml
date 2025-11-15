@@ -1,8 +1,8 @@
-version: "3.9"
-
 services:
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.web
     container_name: espmig_web
     ports:
       - "80:80"
@@ -11,29 +11,52 @@ services:
       - ./www:/var/www/html
       - ./conf/nginx:/etc/nginx/conf.d
       - ./certs:/etc/ssl/private
+
+    dns:
+      - 172.99.0.20
+
     networks:
       espmig_net:
-        ipv4_address: 33.33.33.10
+        ipv4_address: 172.99.0.10
     restart: on-failure
 
-  dns:
-    image: 4km3/dnsmasq:2.90-r3
+  bind9:
+    build:
+      context: .
+      dockerfile: Dockerfile.dns
     container_name: espmig_dns
-    volumes: 
-      - ./conf/dns/dnsmasq.conf:/etc/dnsmasq.conf
     ports:
-      - "127.0.0.1:53:53/udp"
-      - "127.0.0.1:53:53/tcp"
-    cap_add: # capacidad de administrar la red para escuchar puertos como el 53
-      - NET_ADMIN
+      - "53:53/tcp"
+      - "53:53/udp"
+    volumes:
+      - ./conf/dns/named.conf.local:/etc/bind/named.conf.local
+      - ./conf/dns/named.conf.options:/etc/bind/named.conf.options
+      - ./conf/dns/zones:/etc/bind/zones
     networks:
       espmig_net:
-        ipv4_address: 33.33.33.20
-    restart: on-failure
+        ipv4_address: 172.99.0.20
+    restart: unless-stopped
+
+
+# dns fallido
+#   dns:
+#     image: 4km3/dnsmasq:2.90-r3
+#     container_name: espmig_dns
+#     volumes: 
+#       - ./conf/dns/dnsmasq.conf:/etc/dnsmasq.conf
+#     ports:
+#       - "53:53/udp"
+#       - "53:53/tcp"
+#     cap_add: # capacidad de administrar la red para escuchar puertos como el 53
+#       - NET_ADMIN
+#     networks:
+#       espmig_net:
+#         ipv4_address: 172.99.0.20
+#     restart: on-failure
 
 networks:
   espmig_net:
     driver: bridge
     ipam:
       config:
-        - subnet: 33.33.33.0/24
+        - subnet: 172.99.0.0/24
