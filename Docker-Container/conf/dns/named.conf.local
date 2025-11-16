@@ -12,3 +12,7 @@ zone "0.99.172.in-addr.arpa" {
     type master;
     file "/etc/bind/zones/db.172.99.0";
 };
+zone "nueva.edu" {
+    type master;
+    file "/etc/bind/zones/db.nueva.edu";
+};

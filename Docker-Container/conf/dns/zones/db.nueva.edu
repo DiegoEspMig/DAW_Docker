@@ -1,0 +1,14 @@
+$TTL    604800
+$ORIGIN nueva.edu.
+@       IN      SOA     ns1.nueva.edu. admin.nueva.edu. (
+                        2025111501 ; Serial
+                        604800     ; Refresh
+                        86400      ; Retry
+                        2419200    ; Expire
+                        604800 )   ; Negative Cache TTL
+
+@               IN      NS      ns1.nueva.edu.
+ns1             IN      A       172.99.0.20
+
+@               IN      A       127.0.0.1
+www             IN      A       127.0.0.1

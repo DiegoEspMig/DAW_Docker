@@ -14,4 +14,16 @@ Investigación sobre certificados y configuración en https://
 13/11 ->
 Puesta en marcha de los contenedores
 Prueba de funcionamiento
-Cambios de docker-compose.yml para resolución de problemas y servir en localhost por el momento
+Cambios de docker-compose.yml para resolución de problemas y servir en localhost por el momento/
+
+14/11 ->
+Pruebas con dnsmasq fallidas
+
+15/11 ->
+Camio a servidor Ubuntu con bind9
+Configuración Bind9
+
+16/11 ->
+Prueba de funcionamiento
+Automatización para despligue de nuevos sitios
+Maquetación de la documentación
