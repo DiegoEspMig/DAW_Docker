@@ -1,30 +1,8 @@
 services:
-  web:
-    build:
-      context: .
-      dockerfile: Dockerfile.web
-    container_name: espmig_web
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./www:/var/www/html
-      - ./conf/nginx:/etc/nginx/conf.d
-      - ./certs:/etc/ssl/private
-
-    dns:
-      - 172.99.0.20
-
-    networks:
-      espmig_net:
-        ipv4_address: 172.99.0.10
-    restart: on-failure
-
   bind9:
-    build:
-      context: .
-      dockerfile: Dockerfile.dns
+    build: ./conf/dns
     container_name: espmig_dns
+    hostname: servidorBind9
     ports:
       - "53:53/tcp"
       - "53:53/udp"
@@ -35,24 +13,38 @@ services:
     networks:
       espmig_net:
         ipv4_address: 172.99.0.20
-    restart: unless-stopped
 
+    # Configuración DNS interna del contenedor
+    dns:
+      - 127.0.0.1
+    cap_add:
+      - NET_ADMIN
+    command: >
+      sh -c "echo 'nameserver 127.0.0.1' > /etc/resolv.conf &&
+            named -g -c /etc/bind/named.conf -u bind"
+    restart: on-failure
 
-# dns fallido
-#   dns:
-#     image: 4km3/dnsmasq:2.90-r3
-#     container_name: espmig_dns
-#     volumes: 
-#       - ./conf/dns/dnsmasq.conf:/etc/dnsmasq.conf
-#     ports:
-#       - "53:53/udp"
-#       - "53:53/tcp"
-#     cap_add: # capacidad de administrar la red para escuchar puertos como el 53
-#       - NET_ADMIN
-#     networks:
-#       espmig_net:
-#         ipv4_address: 172.99.0.20
-#     restart: on-failure
+  web:
+    build: ./conf/nginx
+    container_name: espmig_web
+    hostname: servidorNginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./www:/var/www/html
+      - ./conf/nginx:/etc/nginx/conf.d
+      - ./certs:/etc/ssl/private
+    networks:
+      espmig_net:
+        ipv4_address: 172.99.0.10
+    # Configuración DNS para usar el servidor DNS personalizado
+    dns:
+      - 172.99.0.20
+      - 8.8.8.8
+    depends_on:
+      - bind9
+    restart: on-failure
 
 networks:
   espmig_net:
@@ -60,3 +52,4 @@ networks:
     ipam:
       config:
         - subnet: 172.99.0.0/24
+          gateway: 172.99.0.1
