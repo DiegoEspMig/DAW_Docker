@@ -1,0 +1,4 @@
+FROM webdevops/php-nginx:latest
+
+# Instalamos ping y actualizamos
+RUN apt-get update && apt-get install -y iputils-ping && rm -rf /var/lib/apt/lists/*

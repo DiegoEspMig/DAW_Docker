@@ -1,0 +1,16 @@
+options {
+    directory "/var/cache/bind"; //Hecho dentro del contenedor
+
+    listen-on { any; };
+    allow-query { localhost; 172.99.0.0/24; };
+
+    forwarders {
+        8.8.8.8;
+        1.1.1.1;
+        8.8.4.4;
+        1.0.0.1;
+    };
+
+    forward only;
+    dnssec-validation no;
+};

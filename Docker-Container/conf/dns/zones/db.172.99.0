@@ -1,0 +1,16 @@
+$TTL    604800
+$ORIGIN 0.99.172.in-addr.arpa.
+
+@       IN      SOA     ns1.proyecto.local. admin.proyecto.local. (
+                        2025111504 ; Serial
+                        604800     ; Refresh
+                        86400      ; Retry
+                        2419200    ; Expire
+                        604800 )   ; Negative Cache TTL
+
+; Servidor de nombres
+@               IN      NS      ns1.proyecto.local.
+
+; PTR records
+20              IN      PTR     ns1.proyecto.local.
+10              IN      PTR     espmig.proyecto.local.

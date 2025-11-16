@@ -1,0 +1,18 @@
+$TTL    604800
+$ORIGIN proyecto.local.
+@       IN      SOA     ns1.proyecto.local. admin.proyecto.local. (
+                        2025111505 ; Serial
+                        604800     ; Refresh
+                        86400      ; Retry
+                        2419200    ; Expire
+                        604800 )   ; Negative Cache TTL
+
+; Servidor de nombres
+@               IN      NS      ns1.proyecto.local.
+
+; Servidor DNS
+ns1             IN      A       172.99.0.20
+
+; Acceso desde host Windows (a través del mapeo de puertos de Docker)
+@               IN      A       127.0.0.1
+www             IN      A       127.0.0.1
