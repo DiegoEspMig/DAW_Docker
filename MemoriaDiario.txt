@@ -25,5 +25,9 @@ Configuración Bind9
 
 16/11 ->
 Prueba de funcionamiento
-Automatización para despligue de nuevos sitios
+Automatización para despliegue de nuevos sitios
 Maquetación de la documentación
+
+17/11 ->
+Finalización de la documentación
+Creación de readme.md para el repositorio GitHub
