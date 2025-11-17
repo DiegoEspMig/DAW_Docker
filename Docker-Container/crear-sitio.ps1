@@ -1,7 +1,7 @@
 # Script: crear-sitio.ps1
 
 $nombre = Read-Host "Introduce el nombre del sitio (ej: pagina)"
-$extension = Read-Host "Introduce la extensión del dominio (ej: com)"
+$extension = Read-Host "Introduce la extension del dominio (ej: com)"
 $nombreExt = "$nombre.$extension"
 
 # -------------------------------------------------------
@@ -47,8 +47,10 @@ Set-Content -Path "./conf/nginx/$nombre.conf" -Value $nginxConf
 # -------------------------------------------------------
 # 2. Generar certificados SSL
 # -------------------------------------------------------
-Write-Host "Generando certificados SSL..."
 
+Write-Host ""
+Write-Host "Generando certificados SSL..."
+Write-Host ""
 & openssl req -x509 -nodes -days 365 -newkey rsa:2048 `
     -keyout "./certs/$nombre.key" `
     -out "./certs/$nombre.crt" `
@@ -101,16 +103,22 @@ $zoneFile = $zoneFile.Replace("SERIALNUMBER", $serial)
 
 Set-Content -Path "./conf/dns/zones/db.$nombreExt" -Value $zoneFile
 
+# -------------------------------------------------------
+# 5. Crear carpeta para ficheros web (.html, .php, .js, .css)
+# -------------------------------------------------------
+
+New-Item -Path "./www/$nombre" -ItemType Directory
 
 Write-Host ""
-Write-Host "✅ Sitio $nombreExt creado con éxito"
+Write-Host "Sitio $nombreExt creado con exito"
 Write-Host ""
-Write-Host "➡️ Ahora añade tus ficheros .html, .css, .js y .php en la carpeta:"
+Write-Host "Ahora agrega tus ficheros .html, .css, .js y .php en la carpeta:"
 Write-Host "   ./www/$nombre/"
 Write-Host ""
-
 Write-Host "Reiniciando contenedores Docker..."
+Write-Host ""
 docker compose restart
-Write-Host "🔄 Contenedores 'web' y 'dns' reiniciados correctamente."
-
+Write-Host ""
+Write-Host "Contenedores 'web' y 'dns' reiniciados correctamente."
+Write-Host ""
 Read-Host "Pulsa ENTER para cerrar"

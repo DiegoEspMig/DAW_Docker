@@ -38,6 +38,7 @@ services:
     networks:
       espmig_net:
         ipv4_address: 172.99.0.10
+        
     # Configuración DNS para usar el servidor DNS personalizado
     dns:
       - 172.99.0.20
