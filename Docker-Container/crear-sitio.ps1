@@ -42,7 +42,7 @@ $nginxConf = $nginxConf.Replace("NOMBREEXT", $nombreExt)
 $nginxConf = $nginxConf.Replace("NOMBRE", $nombre)
 
 # Guardar
-Set-Content -Path "./conf/nginx/$nombre.conf" -Value $nginxConf
+Set-Content -Path "./conf/nginx/conf/$nombre.conf" -Value $nginxConf
 
 # -------------------------------------------------------
 # 2. Generar certificados SSL

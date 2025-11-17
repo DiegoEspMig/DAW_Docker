@@ -14,7 +14,4 @@ zone "nueva.edu" {
     type master;
     file "/etc/bind/zones/db.nueva.edu";
 };
-zone "documentacion.doc" {
-    type master;
-    file "/etc/bind/zones/db.documentacion.doc";
-};
+

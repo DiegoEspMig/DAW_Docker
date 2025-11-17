@@ -26,7 +26,7 @@ if ($confirm -ne "s") {
 # 1. Eliminar archivo de configuración de Nginx
 # -------------------------------------------------------
 
-$nginxFile = "./conf/nginx/$nombre.conf"
+$nginxFile = "./conf/nginx/conf/$nombre.conf"
 
 if (Test-Path $nginxFile) {
     Remove-Item $nginxFile -Force
