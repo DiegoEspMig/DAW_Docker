@@ -2,16 +2,5 @@ zone "0.99.172.in-addr.arpa" {
     type master;
     file "/etc/bind/zones/db.172.99.0";
 };
-zone "proyecto.local" {
-    type master;
-    file "/etc/bind/zones/db.proyecto.local";
-};
-zone "pagina.edu" {
-    type master;
-    file "/etc/bind/zones/db.pagina.edu";
-};
-zone "nueva.edu" {
-    type master;
-    file "/etc/bind/zones/db.nueva.edu";
-};
+
 
